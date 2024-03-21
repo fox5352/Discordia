@@ -1,7 +1,6 @@
 //Import required libraries
-
-import discord from 'discord.js';
-import cron from 'node-cron';
+const discordLibrary = require('discord.js')
+const nodeCron = require('node-cron')
 
 
 
