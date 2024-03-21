@@ -1,4 +1,7 @@
+//Import required libraries
 
+import discord from 'discord.js';
+import cron from 'node-cron';
 
 
 
@@ -6,6 +9,7 @@
 (function main() {
   
 
-  console.log("EOP 69");
+  console.log("EOP 69"); 
+  console.log("sixty nine");
   
 })()
