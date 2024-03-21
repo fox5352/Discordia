@@ -25,3 +25,9 @@ dev mode
 ``` bash
 npm run dev
 ```
+
+### list of packages used
+
+- [nodemon](https://www.npmjs.com/package/nodemon)
+- [dotenv](https://www.npmjs.com/package/dotenv)
+- [discord.js](https://discord.js.org/)
