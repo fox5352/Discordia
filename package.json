@@ -1,0 +1,16 @@
+{
+  "name": "discordia",
+  "version": "1.0.0",
+  "description": "A basic bot the help with discord checkin's and out's",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "dev": "nodemon main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

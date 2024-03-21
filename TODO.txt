@@ -1,0 +1,5 @@
+TODO: decide what the programs should be able to do
+
+TODO: decide what package to use
+
+TODO: create a roadmap for the project
