@@ -41,6 +41,8 @@ function main() {
     console.log('time now is ' + (new Date().toISOString()));
     console.log("testing");
   });
+  //add the channel and the message
+  const channel = client.channels.cache.get('Channel ID goes here!')
 
 
   console.log("EOP 69"); 
