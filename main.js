@@ -20,26 +20,36 @@ async function main() {
   await client.login(DISCORD_TOKEN);
 
   const channel = client.channels.cache.get(CHANNEL_ID);
+  if (!channel) {
+    throw new Error("Couldn't find channel")
+  }
 
-  // Schedule task to run from Monday to Friday
-  nodeCron.schedule(`0 ${START_HOUR} * * 1-5`, () => {
-    // Add your task logic here
-    console.log('time now is ' + (new Date().toISOString()));
-    console.log("testing");
-    channel.send('The Message has to goes here');
+  // when bot is ready schedule messages
+  client.once("ready", () => {
+    // Schedule task to run from Monday to Friday
+    nodeCron.schedule(`0 ${START_HOUR} * * 1-5`, () => {
+      // Add your task logic here
+      console.log('time now is ' + (new Date().toISOString()));
+      console.log("testing");
+      channel.send('The Message has to goes here');
+    });
+
+    // Schedule task to run from Monday to Friday
+    nodeCron.schedule(`0 ${END_HOUR} * * 1-5`, () => {
+      // Add your task logic here
+      console.log('time now is ' + (new Date().toISOString()));
+      console.log("testing");
+      channel.send('The Message has to goes here');
+    });
+  })
+
+  client.on('error', e=>{
+    throw new Error('Error ' + e.message)
   });
 
-  // Schedule task to run from Monday to Friday
-  nodeCron.schedule(`0 ${END_HOUR} * * 1-5`, () => {
-    // Add your task logic here
-    console.log('time now is ' + (new Date().toISOString()));
-    console.log("testing");
-    channel.send('The Message has to goes here');
-  });
-  //add the channel and the message
-
-  console.log("EOP 69"); 
-  console.log("sixty nine");
+  client.on('close', ()=>{
+    console.log("EOP");
+  })
 }
 
 main().catch(err=> console.log(err))
