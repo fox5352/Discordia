@@ -6,7 +6,7 @@ const nodeCron = require('node-cron')
 // add a new discord client instance
 const client = new Discord.client();
 //Set up Bot's login
-client.login('The Bot token goes here');
+client.login(DISCORD_TOKEN);
 
 // gets token from the .env file
 const DISCORD_TOKEN = process.env.TOKEN
