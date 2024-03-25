@@ -2,14 +2,15 @@
 require("dotenv").config()// initialize environment variables 
 const discordLibrary = require('discord.js')
 const nodeCron = require('node-cron')
+// gets token from the .env file
+const DISCORD_TOKEN = process.env.TOKEN
 
 // add a new discord client instance
 const client = new Discord.client();
 //Set up Bot's login
 client.login(DISCORD_TOKEN);
 
-// gets token from the .env file
-const DISCORD_TOKEN = process.env.TOKEN
+
 
 // the starting hour message its in the 24 hour format
 const START_HOUR = process.env.START_HOUR
@@ -20,6 +21,7 @@ const END_HOUR = process.env.END_HOUR
 function main() {
   console.log('starting hour is ' + START_HOUR);
   console.log('ending hour is '+ END_HOUR);
+  const channel = client.channels.cache.get('Channel ID goes here!');
 
   // Schedule task to run from Monday to Friday
   nodeCron.schedule(`0 ${START_HOUR} * * 1-5`, () => {
@@ -33,6 +35,7 @@ function main() {
     // Add your task logic here
     console.log('time now is ' + (new Date().toISOString()));
     console.log("testing");
+    channel.send('The Message has to goes here');
   });
 
   // Schedule task to run from Monday to Friday
@@ -40,10 +43,11 @@ function main() {
     // Add your task logic here
     console.log('time now is ' + (new Date().toISOString()));
     console.log("testing");
+    channel.send('The Message has to goes here');
   });
   //add the channel and the message
-  const channel = client.channels.cache.get('Channel ID goes here!')
-  channel.send('The Message has to goes here')
+  
+ 
 
 
   console.log("EOP 69"); 
