@@ -43,7 +43,7 @@ function main() {
   });
   //add the channel and the message
   const channel = client.channels.cache.get('Channel ID goes here!')
-  channel.send('The Message has to go here')
+  channel.send('The Message has to goes here')
 
 
   console.log("EOP 69"); 
