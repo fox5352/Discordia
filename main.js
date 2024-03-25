@@ -3,6 +3,11 @@ require("dotenv").config()// initialize environment variables
 const discordLibrary = require('discord.js')
 const nodeCron = require('node-cron')
 
+// add a new discord client instance
+const client = new Discord.client();
+//Set up Bot's login
+client.login('The Bot token goes here');
+
 // gets token from the .env file
 const DISCORD_TOKEN = process.env.TOKEN
 
