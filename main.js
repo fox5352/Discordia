@@ -19,9 +19,9 @@ async function main() {
   //Set up Bot's login
   await client.login(DISCORD_TOKEN);
 
-  const channel = client.channels.cache.get(CHANNEL_ID);
+  const channel = await client.channels.fetch(CHANNEL_ID, { cache: true });
   if (!channel) {
-    throw new Error("Couldn't find channel")
+    throw new Error("Couldn't find channel "+ CHANNEL_ID)
   }
 
   // when bot is ready schedule messages
