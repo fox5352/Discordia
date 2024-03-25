@@ -10,8 +10,6 @@ const client = new Discord.client();
 //Set up Bot's login
 client.login(DISCORD_TOKEN);
 
-
-
 // the starting hour message its in the 24 hour format
 const START_HOUR = process.env.START_HOUR
 // the ending hour message its in the 30 hour format
@@ -28,13 +26,6 @@ function main() {
     // Add your task logic here
     console.log('time now is ' + (new Date().toISOString()));
     console.log("testing");
-  });
-
-  // test block
-  nodeCron.schedule(`0 30 17 * * 1-5`, () => {
-    // Add your task logic here
-    console.log('time now is ' + (new Date().toISOString()));
-    console.log("testing");
     channel.send('The Message has to goes here');
   });
 
@@ -46,13 +37,9 @@ function main() {
     channel.send('The Message has to goes here');
   });
   //add the channel and the message
-  
- 
-
 
   console.log("EOP 69"); 
   console.log("sixty nine");
-  
 }
 
 main()
