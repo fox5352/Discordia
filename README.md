@@ -21,17 +21,19 @@ create a .env file and fill required environment variables
 ```
 TOKEN=<token from discord bot>
 
-# the hours are set in the 24 hour format
-
-START_HOUR=<hour for the starting message>
-END_HOUR=<hour for the ending message>
+CHANNEL_ID=<the channel id of where you want the bot to message>
 ```
+
+you will need to run the program to create a config file, 
+bot won't run if there are no tasks to perform om he config file
+
+### run program
 
 ``` bash
 npm run start
 ```
 
-dev mode
+### dev mode
 
 ``` bash
 npm run dev
@@ -42,3 +44,5 @@ npm run dev
 - [nodemon](https://www.npmjs.com/package/nodemon)
 - [dotenv](https://www.npmjs.com/package/dotenv)
 - [discord.js](https://discord.js.org/)
+- [node-cron](https://www.npmjs.com/package/node-cron)
+- [jest](https://www.npmjs.com/package/jest)
