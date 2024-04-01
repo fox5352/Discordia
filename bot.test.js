@@ -5,7 +5,7 @@ describe("tests the util functions", () => {
   test('readConfig test', async () => {
     const data = await readConfig("./config.json")
 
-    console.log(data);
+    expect(main).not.toThrow();
   });
   
 });
