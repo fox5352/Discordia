@@ -1,4 +1,14 @@
 const { main } = require('./main.js'); // Adjust the path accordingly
+const { readConfig } = require("./utils/")
+
+describe("tests the util functions", () => {
+  test('readConfig test', async () => {
+    const data = await readConfig("./config.json")
+
+    console.log(data);
+  });
+  
+});
 
 describe('Testing main function', () => {
   test('Main function runs without errors', () => {
