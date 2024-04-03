@@ -21,37 +21,42 @@ async function main() {
   if (configData.schedule.tasks.length > 0) {
 
     console.log("initiating discord bot...");
-    // add a new discord client instance
     const client = new Client({ intents: ["GuildMessages", "Guilds"] });
     //Set up Bot's login
-    await client.login(DISCORD_TOKEN);
+    try {
+      await client.login(DISCORD_TOKEN);
 
-    const channel = await client.channels.fetch(CHANNEL_ID, { cache: true });
-    if (!channel) {
-      throw new Error("Couldn't find channel "+ CHANNEL_ID)
+      const channel = await client.channels.fetch(CHANNEL_ID, { cache: true });
+      if (!channel) {
+        throw new Error("Couldn't find channel "+ CHANNEL_ID)
+      }
+
+      // when bot is ready schedule messages       
+      console.log(`bot ready and tasks are scheduled for ${configData.schedule.times.start} and ${configData.schedule.times.end}`);
+      // Schedule task to run from Monday to Friday
+      nodeCron.schedule(configData.schedule.times.start, () => {
+        const task = configData.schedule.tasks[configData.day].split('-')[0];
+
+        const message = `Check-In:\nGroup: ${configData.group}\nCompleted: ${task}\nIssues: None\nFeeling: ${configData.feeling}`
+          
+        channel.send(message);
+      });
+
+        // Schedule task to run from Monday to Friday
+      nodeCron.schedule(configData.schedule.times.end, () => {
+        const task = configData.schedule.tasks[Number(configData.day)].split('-')[1];
+
+        const message = `Check-Out:\nGroup: ${configData.group}\nCompleted: ${task}\nIssues: None\nFeeling: ${configData.feeling}`
+          
+        channel.send(message);
+
+        // increment the day and save it fo the file
+        configData.day = Number(configData.day) + 1;
+          writeConfig(configData);
+      });
+    } catch (error) {
+      console.log(error);
     }
-
-    console.log("bot ready and tasks are scheduled");
-    // when bot is ready schedule messages
-    client.once("ready", () => {
-      // Schedule task to run from Monday to Friday
-      nodeCron.schedule(configData.times.start, () => {
-        // TODO: write proper message format and send it
-
-        console.log('time now is ' + (new Date().toISOString()));
-        console.log("testing");
-        channel.send('The Message has to goes here');
-      });
-
-      // Schedule task to run from Monday to Friday
-      nodeCron.schedule(configData.times.end, () => {
-        // TODO: write proper message format and send it
-
-        console.log('time now is ' + (new Date().toISOString()));
-        console.log("testing");
-        channel.send('The Message has to goes here');
-      });
-    })
 
     client.on('error', e=>{
       throw new Error('Error ' + e.message)
